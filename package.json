@@ -1,0 +1,22 @@
+{
+  "name": "socialz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:home": "node-sass styles/home.scss dist/css/home.css",
+    "compile:main": "node-sass styles/main.scss dist/css/main.css",
+    "compile:all": "npm run compile:home && npm run compile:main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}

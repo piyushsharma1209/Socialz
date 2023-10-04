@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to SOCIALZ</title>
+    <link rel="stylesheet" href="./dist/css/main.css">
+</head>
+
+<body class="dark-mode">
+
+    <header>
+        <p>Welcome to</p>
+        <h1>SOCIALZ</h1>
+        <span>Join the Conversation!</span>
+    </header>
+
+
+    <div class="container">
+        <div class="card">
+            <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="register-tab" data-toggle="tab" href="#register"
+                        role="tab">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="login-tab" data-toggle="tab" href="#login" role="tab">Login</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="register" role="tabpanel">
+                    <form id="registerForm" class="p-3">
+                        <div class="form-group">
+                            <label for="name">Username</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="login" role="tabpanel">
+                    <form id="loginForm" class="p-3">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS library -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script type="module" src="./js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+// Primary background gradient
+body.dark-mode {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center; // Vertically centering the content
+    justify-content: center; // Horizontally centering the content
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+// Style the card
+.card {
+    background-color: rgba(255, 255, 255, 0.85); // Slightly transparent background
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25); // Enhanced shadow for a lifted card effect
+    width: 90%; // Ensuring it's not too wide on smaller devices
+    max-width: 500px; // Limiting maximum width for large screens
+}
+
+// Colorful gradient navigation tab styles
+.nav-tabs .nav-link {
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 200% 200%;
+    margin: 0 5px;
+    transition: all 0.5s ease, background-position 0.5s;
+
+    &:hover {
+        background-position: 100% 100%;
+    }
+
+    &.active {
+        background-position: 100% 100%;
+        color: white;
+        background: black;
+    }
+}
+
+
+header {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.827);
+    padding: 3% 5%;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+    margin-left: 150px;
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: -webkit-linear-gradient(left, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: fadeInDown 1.5s both;
+    }
+
+    p {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-bottom: 10px;
+        animation: fadeInUp 1.5s 0.5s both;
+    }
+
+    span {
+        font-size: 1.2rem;
+        display: block;
+        margin-top: 10px;
+        font-weight: 400;
+        animation: fadeIn 2s 1s both;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+
+
+// Inputs and buttons enhancements
+.form-control {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+
+    &:focus {
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+}
+
+// Colorful gradient button styles
+.btn {
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 200% 200%;
+    color: white;
+    transition: background-position 0.5s, box-shadow 0.3s;
+
+    &:hover {
+        background-position: 100% 100%;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:focus {
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        background-position: 100% 100%;
+    }
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    border-width: 0;
+}

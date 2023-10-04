@@ -1,0 +1,175 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+}
+
+.navbar {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: Gradient 10s ease infinite;
+    padding: 15px 0; // Added some padding for a taller navbar
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // A subtle shadow for depth
+
+    .container {
+        display: flex;
+        justify-content: space-between; // Space out the logo and the links
+        align-items: center; // Vertically center align items
+    }
+
+    .logo {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 26px; // Slightly increased size for more prominence
+        color: white;
+        text-transform: uppercase; // Optional: Transforming to uppercase for a bold look
+        letter-spacing: 1px; // Optional: Adding a bit of spacing between letters
+    }
+
+    .nav-links {
+        list-style-type: none; // Remove bullet points
+        display: flex; // Making links horizontal
+        gap: 20px; // Gap between links
+
+        .nav-item {
+            margin: 0; // Resetting any default margin
+
+            .nav-link {
+                font-family: 'Poppins', sans-serif; // Setting the same font for a consistent look
+                font-weight: 500; // A little less weight than the logo but still bold
+                font-size: 18px; // Good size for clickability
+                color: white;
+                padding: 5px 15px; // Some padding for a larger clickable area
+                border-radius: 15px; // Rounded corners for hover effect
+                transition: background-color 0.3s, color 0.3s; // Transition for smooth effects
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1); // Slight background on hover for a nice effect
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+        }
+    }
+}
+
+
+.container {
+    display: flex;
+    gap: 2rem;
+    padding: 3% 5%;
+}
+
+
+.create-post {
+    flex: 1; // This makes it take up 1 portion of the available width.
+    max-width: 40%;
+
+    h2 {
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 1em;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        margin-bottom: 1em;
+        padding: 0.5em;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button.btn-primary {
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 600;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 200% 200%;
+        color: white;
+        transition: background-position 0.5s, box-shadow 0.3s;
+
+        &:hover {
+            background-position: 100% 100%;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        &:focus {
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            background-position: 100% 100%;
+        }
+    }
+}
+
+.posts-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%; // This ensures it doesn't grow beyond 60% of the container's width.
+    flex: 2; // This makes it take up 2 portions of the available width.
+
+    .posts-header {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    .post {
+        background: #fff;
+        padding: 1em;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        margin-top: 20px;
+        cursor: pointer;
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        img {
+            width: 100%;
+            max-height: 300px;
+            border-radius: 5px;
+            margin-bottom: 1em;
+            object-fit: cover;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+    }
+}
+
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
