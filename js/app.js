@@ -10,8 +10,6 @@ async function sendRequest(endpoint, method = 'GET', payload = null) {
         body: payload ? JSON.stringify(payload) : null
     };
 
-    console.log(`Sending ${method} request to ${endpoint} with payload:`, payload);
-
     return fetch(endpoints[endpoint], options);
 }
 
@@ -35,6 +33,7 @@ async function registerUser(username, email, password, avatar = '', banner = '')
 
     if (response.ok) {
         console.log('Successfully registered.');
+        localStorage.setItem('name', username);  // Store the user's name for retrieval in profile.js
         document.querySelector('#login-tab').click();
     } else {
         console.error('Failed to register:', await response.text());
@@ -52,16 +51,13 @@ async function loginUser(email, password) {
     if (response.ok) {
         const result = await response.json();
         console.log('Logged in successfully:', result);
-
         setAccessToken(result.accessToken);
-
-        // Redirect to home.html on successful login
+        localStorage.setItem('name', result.name);
         window.location.href = 'home.html';
     } else {
         console.error('Failed to login:', await response.text());
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#registerForm').addEventListener('submit', async (event) => {

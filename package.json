@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile:home": "node-sass styles/home.scss dist/css/home.css",
     "compile:main": "node-sass styles/main.scss dist/css/main.css",
-    "compile:all": "npm run compile:home && npm run compile:main"
+    "compile:profile": "node-sass styles/profile.scss dist/css/profile.css",
+    "compile:all": "npm run compile:home && npm run compile:main && npm run compile:profile "
   },
   "keywords": [],
   "author": "",
