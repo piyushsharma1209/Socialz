@@ -2,11 +2,10 @@ import { getAccessToken, removeAccessToken } from './localstorage.js';
 import { endpoints } from './api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Check user authentication status
     const accessToken = getAccessToken();
 
     if (!accessToken) {
-        window.location.href = 'index.html'; // Redirect to login if not authenticated
+        window.location.href = 'index.html';
     }
 
     try {
@@ -21,11 +20,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         removeAccessToken();
         window.location.href = 'index.html';
     });
-
-    // TODO: Add Profile page navigation when ready
-    // document.getElementById('profileLink').addEventListener('click', () => {
-    //     window.location.href = 'profile.html';
-    // });
 });
 
 document.querySelector('#createPostForm').addEventListener('submit', async (event) => {
@@ -44,6 +38,51 @@ document.querySelector('#createPostForm').addEventListener('submit', async (even
         console.error('Failed to create post:', err);
     }
 });
+
+document.getElementById('searchInput').addEventListener('input', async (e) => {
+    const query = e.target.value;
+    if (query.length >= 1) {
+        try {
+            const users = await searchUsers(query);
+            displayUsers(users);
+        } catch (err) {
+            console.error('Failed to search users:', err);
+        }
+    } else {
+        // Hide results if the query is empty
+        document.getElementById('searchResults').style.display = 'none';
+    }
+});
+
+async function searchUsers(query) {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    const response = await fetch(endpoints.profile, options);
+
+    if (response.ok) {
+        const users = await response.json();
+        // Filter users based on the query and return
+        return users.filter(user => user.name.toLowerCase().startsWith(query.toLowerCase()));
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+function displayUsers(users) {
+    const container = document.getElementById('searchResults');
+    container.innerHTML = '';
+    container.style.display = users.length > 0 ? 'block' : 'none';
+
+    users.forEach(user => {
+        const userElement = `<div>${user.name}</div>`;
+        container.innerHTML += userElement;
+    });
+}
+
 
 async function createPost(postData) {
     const options = {
@@ -95,10 +134,77 @@ function displayPosts(posts) {
                 ${imageElement}
                 <p>${post.body}</p>
                 <small>Comments: ${post._count.comments} | Reactions: ${post._count.reactions}</small>
+                <button class="react" data-id="${post.id}" data-symbol="👍">👍</button>
             </div>
         `;
 
         container.innerHTML += postElement;
     });
+    const reactButtons = document.querySelectorAll('.react');
+    reactButtons.forEach(button => {
+        button.addEventListener('click', handleReactionClick);
+    });
 }
+
+async function handleReactionClick(event) {
+    const postId = event.target.getAttribute('data-id');
+    const symbol = event.target.getAttribute('data-symbol');
+
+    try {
+        const reactionResponse = await reactToPost(postId, symbol);
+
+        // Fetch the updated post to get the new reaction count
+        const updatedPost = await fetchSinglePost(postId);
+        updateReactionCount(postId, updatedPost._count.reactions);
+
+    } catch (err) {
+        console.error('Failed to react:', err);
+    }
+}
+
+
+async function reactToPost(postId, symbol) {
+    const options = {
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    const response = await fetch(`${endpoints.posts}/${postId}/react/${symbol}`, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+async function fetchSinglePost(postId) {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    const response = await fetch(`${endpoints.posts}/${postId}`, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+function updateReactionCount(postId, newCount) {
+    const postsContainer = document.getElementById('postsContainer');
+    const reactionButton = postsContainer.querySelector(`.react[data-id="${postId}"]`);
+    const countElement = reactionButton.previousElementSibling;
+
+    if (countElement && countElement.matches('small')) {
+        const updatedText = countElement.textContent.replace(/Reactions: \d+/, `Reactions: ${newCount}`);
+        countElement.textContent = updatedText;
+    }
+}
+
 

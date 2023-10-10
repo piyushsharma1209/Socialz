@@ -123,11 +123,6 @@ body.light-mode {
         border-radius: 10px;
         transition: transform 0.3s ease;
         margin-top: 20px;
-        cursor: pointer;
-
-        &:hover {
-            transform: translateY(-10px);
-        }
 
         h4 {
             font-family: 'Poppins', sans-serif;
@@ -151,6 +146,28 @@ body.light-mode {
             font-size: 0.8rem;
             color: #666;
         }
+
+        .react {
+            background-color: transparent; // Initially transparent to only show emoji
+            border: 1px solid #ccc; // Light border around the button
+            padding: 5px 10px; // Padding for some space around the emoji
+            font-size: 0.8rem; // Slightly bigger emoji for better visibility
+            border-radius: 100px; // Rounded corners for the button
+            cursor: pointer; // Hand cursor for clickable items
+            transition: background-color 0.3s, transform 0.2s; // Smooth transitions
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05); // Slight background color on hover
+                transform: scale(1.1); // Slightly enlarge the button for a pop effect
+            }
+
+            &:focus {
+                outline: none; // Remove default browser outline
+                background-color: rgba(0, 0, 0, 0.1); // Slighter darker background color on focus
+                transform: scale(1.1); // Consistent with hover effect
+            }
+        }
+
     }
 }
 
@@ -166,5 +183,40 @@ body.light-mode {
 
     100% {
         background-position: 0% 50%
+    }
+}
+
+.search-container {
+    position: relative;
+    margin-right: 20px;
+
+    input {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        outline: none;
+    }
+
+    .search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 250px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 10;
+        display: none;
+
+        div {
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #eee;
+            }
+        }
     }
 }

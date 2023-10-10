@@ -115,5 +115,6 @@ function displayProfile(data) {
 
         container.appendChild(countsContainer);
     }
+
 }
 
