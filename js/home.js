@@ -135,6 +135,12 @@ function displayPosts(posts) {
                 <p>${post.body}</p>
                 <small>Comments: ${post._count.comments} | Reactions: ${post._count.reactions}</small>
                 <button class="react" data-id="${post.id}" data-symbol="👍">👍</button>
+                <div class="comments">
+                    <form class="comment-form" data-post-id="${post.id}">
+                        <input type="text" placeholder="Add a comment..." class="comment-input">
+                        <button type="submit">Post</button>
+                    </form>
+                </div>
             </div>
         `;
 
@@ -143,6 +149,9 @@ function displayPosts(posts) {
     const reactButtons = document.querySelectorAll('.react');
     reactButtons.forEach(button => {
         button.addEventListener('click', handleReactionClick);
+    });
+    document.querySelectorAll('.comment-form').forEach(form => {
+        form.addEventListener('submit', handleCommentSubmit);
     });
 }
 
@@ -208,3 +217,39 @@ function updateReactionCount(postId, newCount) {
 }
 
 
+// Post a comment to a specific post
+async function postComment(postId, body, replyToId = null) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+        body: JSON.stringify({ body, replyToId }),
+    };
+
+    const response = await fetch(`${endpoints.posts}/${postId}/comment`, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+// Function to handle comment form submission
+async function handleCommentSubmit(event) {
+    event.preventDefault();
+
+    const postId = event.target.getAttribute('data-post-id');
+    const body = event.target.querySelector('.comment-input').value;
+
+    try {
+        await postComment(postId, body);
+        // Once the comment is posted successfully, fetch and display the posts again
+        const posts = await fetchPosts();
+        displayPosts(posts);
+    } catch (err) {
+        console.error('Failed to post comment:', err);
+    }
+}

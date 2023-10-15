@@ -168,6 +168,37 @@ body.light-mode {
             }
         }
 
+        .comments {
+            margin-top: 20px;
+
+            .comment-form {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                .comment-input {
+                    flex: 1;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                button {
+                    padding: 8px 12px;
+                    background-color: #23a6d5;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.2s;
+
+                    &:hover {
+                        background-color: darken(#23a6d5, 10%);
+                    }
+                }
+            }
+        }
+
     }
 }
 
