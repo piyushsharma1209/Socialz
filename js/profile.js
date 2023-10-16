@@ -206,7 +206,7 @@ async function updateAvatar(avatarUrl) {
 
         if (response.ok) {
             console.log("Avatar updated successfully.");
-            getProfileData(); // Refresh profile data after updating
+            getProfileData(), getUserPosts(); // Refresh the profile and its posts
         } else {
             console.error('Error updating avatar:', await response.text());
         }
