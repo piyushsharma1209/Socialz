@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const posts = await fetchPosts();
         displayPosts(posts);
+        document.querySelector('#createPostForm').reset();
     } catch (err) {
         console.error('Failed to fetch posts:', err);
     }
@@ -31,9 +32,11 @@ document.querySelector('#createPostForm').addEventListener('submit', async (even
     try {
         const response = await createPost({ title, body, media });
         console.log('Post created successfully:', response);
-        // Fetch the updated posts list and display
         const posts = await fetchPosts();
         displayPosts(posts);
+
+        // Reset the form
+        document.querySelector('#createPostForm').reset();
     } catch (err) {
         console.error('Failed to create post:', err);
     }
@@ -253,3 +256,5 @@ async function handleCommentSubmit(event) {
         console.error('Failed to post comment:', err);
     }
 }
+
+
