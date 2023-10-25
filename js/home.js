@@ -28,9 +28,10 @@ document.querySelector('#createPostForm').addEventListener('submit', async (even
     const title = document.getElementById('postTitle').value;
     const body = document.getElementById('postBody').value;
     const media = document.getElementById('postMedia').value;
+    const tags = document.getElementById('postTags').value.split(',').map(tag => tag.trim());
 
     try {
-        const response = await createPost({ title, body, media });
+        const response = await createPost({ title, body, media, tags });
         console.log('Post created successfully:', response);
         const posts = await fetchPosts();
         displayPosts(posts);
@@ -114,7 +115,7 @@ async function fetchPosts() {
         },
     };
 
-    const response = await fetch(endpoints.posts, options);
+    const response = await fetch(`${endpoints.posts}?_author=true&_comments=true`, options);
 
     if (response.ok) {
         return await response.json();
@@ -131,11 +132,33 @@ function displayPosts(posts) {
 
     latestPosts.forEach(post => {
         const imageElement = post.media ? `<img src="${post.media}" alt="Post Image">` : '';
+        const authorAvatar = post.author.avatar ? post.author.avatar : './img/user.jpg';
+        const tagsElement = post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ');
+
+        // Display author's name and avatar
+        const authorElement = `
+            <div class="post-author">
+            <img src="${authorAvatar}" alt="Author's Avatar">
+            <span>${post.author.name}</span>
+            </div>
+        `;
+
+        // Display comments
+        const commentsElement = post.comments.map(comment => `
+            <div class="comment">
+                <img src="${comment.author.avatar}" alt="Commenter's Avatar">
+                <p>${comment.body}</p>
+            </div>
+        `).join('');
+
         const postElement = `
             <div class="post">
+                ${authorElement}
                 <h4>${post.title}</h4>
                 ${imageElement}
                 <p>${post.body}</p>
+                <div class="post-tags">${tagsElement}</div>
+                <div class="post-comments">${commentsElement}</div>
                 <small>Comments: ${post._count.comments} | Reactions: ${post._count.reactions}</small>
                 <button class="react" data-id="${post.id}" data-symbol="👍">👍</button>
                 <div class="comments">
@@ -258,3 +281,134 @@ async function handleCommentSubmit(event) {
 }
 
 
+document.getElementById('filterPosts').addEventListener('change', async (event) => {
+    const filter = event.target.value;
+
+    try {
+        const posts = await fetchFilteredPosts(filter);
+        displayPosts(posts);
+    } catch (err) {
+        console.error('Failed to fetch filtered posts:', err);
+    }
+});
+async function fetchFilteredPosts(filter) {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    let endpoint = `${endpoints.posts}?_author=true&_comments=true`; // default to all posts
+
+    if (filter === 'following') {
+        endpoint = `${endpoints.posts}/following?_author=true&_comments=true`; // update to following posts if filter is "following"
+    }
+
+    const response = await fetch(endpoint, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+
+async function fetchProfile(name) {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    const response = await fetch(`${endpoints.profile}/${name}`, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+async function followProfile(name) {
+    const options = {
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    const response = await fetch(`${endpoints.profile}/${name}/follow`, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+async function unfollowProfile(name) {
+    const options = {
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+
+    const response = await fetch(`${endpoints.profile}/${name}/unfollow`, options);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw new Error(await response.text());
+    }
+}
+
+function displayProfilePopup(profile) {
+    const avatarImage = profile.avatar || './img/user.jpg'; // Use the author's avatar if it exists, else default to user.jpg
+
+    const popup = document.createElement('div');
+    popup.id = 'profilePopup';
+    popup.innerHTML = `
+        <div class="profile-popup-content">
+        <img src="${avatarImage}" alt="${profile.name}'s Avatar">
+        <h3>${profile.name}</h3>
+            <p>Email: ${profile.email}</p>
+            <p>Posts: ${profile._count.posts}</p>
+            <p>Followers: ${profile._count.followers}</p>
+            <p>Following: ${profile._count.following}</p>
+            <button id="followBtn">Follow</button>
+            <button id="closePopup">Close</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+
+    // Event listener to close the popup
+    document.getElementById('closePopup').addEventListener('click', () => {
+        popup.remove();
+    });
+
+    // Event listener for the follow button
+    document.getElementById('followBtn').addEventListener('click', async () => {
+        try {
+            await followProfile(profile.name);
+            alert('Followed successfully!');
+            popup.remove();
+        } catch (error) {
+            alert('Error following the user.');
+        }
+    });
+}
+
+
+document.addEventListener('click', async (event) => {
+    if (event.target.closest('.post-author span')) {
+        const authorName = event.target.textContent;
+        try {
+            const profile = await fetchProfile(authorName);
+            displayProfilePopup(profile);
+        } catch (error) {
+            console.error('Failed to fetch profile:', error);
+        }
+    }
+});
