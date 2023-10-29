@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Failed to fetch posts:', err);
     }
 
-    // Logout function
     document.getElementById('logoutLink').addEventListener('click', () => {
         removeAccessToken();
         window.location.href = 'index.html';

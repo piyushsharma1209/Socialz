@@ -28,6 +28,11 @@ body.light-mode {
         letter-spacing: 1px; // Optional: Adding a bit of spacing between letters
     }
 
+    .logo a {
+        text-decoration: none;
+        color: white;
+    }
+
     .nav-links {
         list-style-type: none; // Remove bullet points
         display: flex; // Making links horizontal
@@ -112,7 +117,6 @@ body.light-mode {
     .posts-header {
         font-size: 1.5em;
         font-weight: 600;
-        margin-bottom: 1.5rem;
         color: #333;
     }
 
@@ -278,7 +282,6 @@ body.light-mode {
 
 .search-container {
     position: relative;
-    margin-right: 20px;
 
     input {
         padding: 8px 12px;
@@ -410,5 +413,27 @@ body.light-mode {
                 background-color: darken(#dc3545, 10%);
             }
         }
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar .nav-links {
+        align-items: center;
+    }
+
+    .container {
+        flex-direction: column; // Stack child elements vertically
+    }
+
+    .create-post,
+    .posts-section {
+        max-width: 100%; // Take full width
+        flex: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar .search-container {
+        align-items: center;
     }
 }

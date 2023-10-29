@@ -28,6 +28,11 @@ body.light-mode {
         letter-spacing: 1px; // Optional: Adding a bit of spacing between letters
     }
 
+    .logo a {
+        text-decoration: none;
+        color: white;
+    }
+
     .nav-links {
         list-style-type: none; // Remove bullet points
         display: flex; // Making links horizontal
@@ -101,6 +106,7 @@ body.light-mode {
 
     .counts {
         display: flex;
+        flex-wrap: wrap; // Allow wrapping for the counts
         gap: 1rem;
         margin-top: 1rem;
 
@@ -319,4 +325,81 @@ body.light-mode {
     display: flex;
     /* Align items to the right */
     width: 100%;
+}
+
+
+@media (max-width: 992px) {
+    .navbar .nav-links {
+        align-items: center;
+    }
+
+    .container {
+        flex-direction: column; // Stack child elements vertically
+    }
+}
+
+@media (max-width: 768px) {
+    // For tablet and mobile screens
+
+    #avatar-update-container {
+        flex-direction: column;
+        gap: 10px;
+
+        #avatarInput,
+        #updateAvatarBtn {
+            width: 100%;
+        }
+    }
+
+    #profile-container {
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    .posts-container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .counts {
+        justify-content: center; // Center the counts on smaller screens
+
+        p {
+            flex: none; // Let them take their natural size
+            width: 100%; // Take full width on smaller screens
+            margin-bottom: 0.5rem;
+        }
+    }
+
+
+    // Adjust buttons for smaller screens
+    .edit-post-btn,
+    .update-post-btn,
+    .delete-btn {
+        padding: 5px 8px;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 10px 5px;
+    }
+
+    #avatar-update-container {
+        padding: 0.5rem;
+    }
+
+    .posts-container {
+        gap: 0.5rem;
+    }
+
+    .counts {
+        gap: 0.5rem;
+
+        p {
+            padding: 0.5rem 0.5rem; // Adjust padding for smaller screens
+        }
+    }
 }

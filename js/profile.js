@@ -1,5 +1,6 @@
-import { getAccessToken } from './localstorage.js';
+import { getAccessToken, removeAccessToken } from './localstorage.js';
 import { endpoints } from './api.js';
+
 
 async function getProfileData() {
     try {
@@ -124,6 +125,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Please provide a valid avatar URL.');
         }
     });
+    document.getElementById('logoutLink').addEventListener('click', () => {
+        removeAccessToken();
+        window.location.href = 'index.html';
+    });
     if (name && token) {
         const posts = await getPostsByProfile(name, token);
         if (posts) {
@@ -131,6 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 });
+
 
 function displayProfile(data) {
     const container = document.getElementById("profile-container");
@@ -332,3 +338,4 @@ async function deletePost(postId) {
         console.error('Error deleting post:', error);
     }
 }
+
