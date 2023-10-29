@@ -147,8 +147,7 @@ function displayProfile(data) {
         avatar.src = data.avatar;
         avatar.alt = `${data.name}'s Avatar`;
     } else {
-        // Placeholder image
-        avatar.src = './path_to_your_directory/user.png'; // Modify path accordingly
+        avatar.src = './path_to_your_directory/user.png';
         avatar.alt = 'Placeholder Avatar';
     }
     avatar.className = "profile-avatar";
@@ -261,13 +260,13 @@ function editPost(postData, postDiv) {
     const bodyTextarea = document.createElement('textarea');
     bodyTextarea.className = 'edit-post-body';
     bodyTextarea.value = postData.body;
-    bodyTextarea.placeholder = 'Content'; // Added placeholder
+    bodyTextarea.placeholder = 'Content';
     postDiv.appendChild(bodyTextarea);
 
     const mediaInput = document.createElement('input');
     mediaInput.type = 'text';
     mediaInput.className = 'edit-post-media';
-    mediaInput.placeholder = 'Image URL'; // Added placeholder
+    mediaInput.placeholder = 'Image URL';
     mediaInput.value = postData.media;
     postDiv.appendChild(mediaInput);
 
@@ -303,7 +302,7 @@ async function updatePost(id, title, body, media) {
         if (response.ok) {
             const updatedPost = await response.json();
             console.log("Post updated successfully:", updatedPost);
-            getProfileData(), getUserPosts(); // Refresh the profile and its posts
+            getProfileData(), getUserPosts();
         } else {
             console.error('Error updating post:', await response.text());
         }
@@ -330,7 +329,7 @@ async function deletePost(postId) {
 
         if (response.ok) {
             console.log("Post deleted successfully.");
-            getProfileData(), getUserPosts(); // Refresh the profile and its posts
+            getProfileData(), getUserPosts();
         } else {
             console.error('Error deleting post:', await response.text());
         }

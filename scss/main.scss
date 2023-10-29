@@ -1,13 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-// Variables
-$mobile: 480px;
-$tablet: 768px;
-$desktop: 992px;
-
-// Primary background gradient
-body.dark-mode {
+body.log {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
@@ -15,8 +9,8 @@ body.dark-mode {
     color: white;
     height: 100vh;
     display: flex;
-    align-items: center; // Vertically centering the content
-    justify-content: center; // Horizontally centering the content
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes gradient {
@@ -33,21 +27,19 @@ body.dark-mode {
     }
 }
 
-// Style the card
 .card {
-    background-color: rgba(255, 255, 255, 0.85); // Slightly transparent background
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25); // Enhanced shadow for a lifted card effect
-    width: 90%; // Ensuring it's not too wide on smaller devices
-    max-width: 500px; // Limiting maximum width for large screens
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 500px;
 
-    @media(max-width: $tablet) {
-        margin-top: 20px; // Add some margin on top for mobile and tablet
+    @media(max-width: 768px) {
+        margin-top: 20px;
     }
 }
 
-// Colorful gradient navigation tab styles
 .nav-tabs .nav-link {
     border: none;
     border-radius: 10px;
@@ -78,7 +70,7 @@ header {
     font-family: 'Poppins', sans-serif;
     margin-left: 150px;
 
-    @media(max-width: $tablet) {
+    @media(max-width: 768px) {
         display: none;
     }
 
@@ -143,7 +135,6 @@ header {
 
 
 
-// Inputs and buttons enhancements
 .form-control {
     border: none;
     border-radius: 8px;
@@ -156,7 +147,6 @@ header {
     }
 }
 
-// Colorful gradient button styles
 .btn {
     border-radius: 8px;
     border: none;
@@ -192,18 +182,17 @@ header {
     margin-bottom: 5px;
     border-width: 0;
 
-    @media(max-width: $tablet) {
-        padding: 0 20px; // Add some padding on the sides for mobile and tablet
+    @media(max-width: 768px) {
+        padding: 0 20px;
     }
 }
 
-// Adjustments for navigation tabs
 .nav-tabs {
-    @media(max-width: $tablet) {
-        flex-direction: column; // Stack tabs vertically
+    @media(max-width: 768px) {
+        flex-direction: column;
 
         .nav-link {
-            margin-bottom: 10px; // Space between stacked tabs
+            margin-bottom: 10px;
         }
     }
 }

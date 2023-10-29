@@ -33,7 +33,7 @@ async function registerUser(username, email, password, avatar = '', banner = '')
 
     if (response.ok) {
         console.log('Successfully registered.');
-        localStorage.setItem('name', username);  // Store the user's name for retrieval in profile.js
+        localStorage.setItem('name', username);  // Store the user's name for profile.js
         document.querySelector('#login-tab').click();
     } else {
         console.error('Failed to register:', await response.text());

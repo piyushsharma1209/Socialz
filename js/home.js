@@ -68,7 +68,7 @@ async function searchUsers(query) {
 
     if (response.ok) {
         const users = await response.json();
-        // Filter users based on the query and return
+        // Filter users
         return users.filter(user => user.name.toLowerCase().startsWith(query.toLowerCase()));
     } else {
         throw new Error(await response.text());
@@ -271,7 +271,6 @@ async function handleCommentSubmit(event) {
 
     try {
         await postComment(postId, body);
-        // Once the comment is posted successfully, fetch and display the posts again
         const posts = await fetchPosts();
         displayPosts(posts);
     } catch (err) {
@@ -297,10 +296,10 @@ async function fetchFilteredPosts(filter) {
         },
     };
 
-    let endpoint = `${endpoints.posts}?_author=true&_comments=true`; // default to all posts
+    let endpoint = `${endpoints.posts}?_author=true&_comments=true`;
 
     if (filter === 'following') {
-        endpoint = `${endpoints.posts}/following?_author=true&_comments=true`; // update to following posts if filter is "following"
+        endpoint = `${endpoints.posts}/following?_author=true&_comments=true`;
     }
 
     const response = await fetch(endpoint, options);
@@ -364,7 +363,7 @@ async function unfollowProfile(name) {
 }
 
 function displayProfilePopup(profile) {
-    const avatarImage = profile.avatar || './img/user.jpg'; // Use the author's avatar if it exists, else default to user.jpg
+    const avatarImage = profile.avatar || './img/user.jpg';
 
     const popup = document.createElement('div');
     popup.id = 'profilePopup';
@@ -382,19 +381,17 @@ function displayProfilePopup(profile) {
     `;
     document.body.appendChild(popup);
 
-    // Event listener to close the popup
     document.getElementById('closePopup').addEventListener('click', () => {
         popup.remove();
     });
 
-    // Event listener for the follow button
     document.getElementById('followBtn').addEventListener('click', async () => {
         try {
             await followProfile(profile.name);
             alert('Followed successfully!');
             popup.remove();
         } catch (error) {
-            alert('Error following the user.');
+            alert('Already following or please try again.');
         }
     });
 }

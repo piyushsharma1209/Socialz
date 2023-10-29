@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-body.light-mode {
+body {
     background-color: #f5f5f5;
     color: #333;
 }
@@ -10,22 +10,22 @@ body.light-mode {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: Gradient 10s ease infinite;
-    padding: 15px 0; // Added some padding for a taller navbar
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // A subtle shadow for depth
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .container {
         display: flex;
-        justify-content: space-between; // Space out the logo and the links
-        align-items: center; // Vertically center align items
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logo {
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        font-size: 26px; // Slightly increased size for more prominence
+        font-size: 26px;
         color: white;
-        text-transform: uppercase; // Optional: Transforming to uppercase for a bold look
-        letter-spacing: 1px; // Optional: Adding a bit of spacing between letters
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .logo a {
@@ -34,24 +34,24 @@ body.light-mode {
     }
 
     .nav-links {
-        list-style-type: none; // Remove bullet points
-        display: flex; // Making links horizontal
-        gap: 20px; // Gap between links
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
 
         .nav-item {
-            margin: 0; // Resetting any default margin
+            margin: 0;
 
             .nav-link {
-                font-family: 'Poppins', sans-serif; // Setting the same font for a consistent look
-                font-weight: 500; // A little less weight than the logo but still bold
-                font-size: 18px; // Good size for clickability
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+                font-size: 18px;
                 color: white;
-                padding: 5px 15px; // Some padding for a larger clickable area
-                border-radius: 15px; // Rounded corners for hover effect
-                transition: background-color 0.3s, color 0.3s; // Transition for smooth effects
+                padding: 5px 15px;
+                border-radius: 15px;
+                transition: background-color 0.3s, color 0.3s;
 
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.1); // Slight background on hover for a nice effect
+                    background-color: rgba(255, 255, 255, 0.1);
                     color: rgba(255, 255, 255, 0.8);
                 }
             }
@@ -68,7 +68,7 @@ body.light-mode {
 
 
 .create-post {
-    flex: 1; // This makes it take up 1 portion of the available width.
+    flex: 1;
     max-width: 40%;
 
     h2 {
@@ -111,8 +111,8 @@ body.light-mode {
 .posts-section {
     display: flex;
     flex-direction: column;
-    max-width: 60%; // This ensures it doesn't grow beyond 60% of the container's width.
-    flex: 2; // This makes it take up 2 portions of the available width.
+    max-width: 60%;
+    flex: 2;
 
     .posts-header {
         font-size: 1.5em;
@@ -152,23 +152,23 @@ body.light-mode {
         }
 
         .react {
-            background-color: transparent; // Initially transparent to only show emoji
-            border: 1px solid #ccc; // Light border around the button
-            padding: 5px 10px; // Padding for some space around the emoji
-            font-size: 0.8rem; // Slightly bigger emoji for better visibility
-            border-radius: 100px; // Rounded corners for the button
-            cursor: pointer; // Hand cursor for clickable items
-            transition: background-color 0.3s, transform 0.2s; // Smooth transitions
+            background-color: transparent;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
 
             &:hover {
-                background-color: rgba(0, 0, 0, 0.05); // Slight background color on hover
-                transform: scale(1.1); // Slightly enlarge the button for a pop effect
+                background-color: rgba(0, 0, 0, 0.05);
+                transform: scale(1.1);
             }
 
             &:focus {
-                outline: none; // Remove default browser outline
-                background-color: rgba(0, 0, 0, 0.1); // Slighter darker background color on focus
-                transform: scale(1.1); // Consistent with hover effect
+                outline: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                transform: scale(1.1);
             }
         }
 
@@ -213,7 +213,7 @@ body.light-mode {
                 height: 40px;
                 border-radius: 50%;
                 margin-right: 10px;
-                border: 1px solid #ccc; // Added a subtle border around the avatar
+                border: 1px solid #ccc;
                 cursor: pointer;
             }
 
@@ -245,7 +245,7 @@ body.light-mode {
                     background: #f8f8f8;
                     border-radius: 10px;
                     padding: 10px;
-                    flex: 1; // Allows the comment text to take the full available width
+                    flex: 1;
                     margin: 0;
                 }
             }
@@ -314,43 +314,39 @@ body.light-mode {
     }
 }
 
-// Post Filter Dropdown Container
 .filter {
-    margin: 20px 0; // Space around the dropdown for breathing room
+    margin: 20px 0;
     display: flex;
-    justify-content: flex-start; // Aligns the label and dropdown from the left
-    align-items: center; // Vertically aligns the label and dropdown
+    justify-content: flex-start;
+    align-items: center;
 
     label {
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
-        margin-right: 15px; // Gives some space between the label and the dropdown for a cleaner look
+        margin-right: 15px;
     }
 
-    // Dropdown Styling
     select#filterPosts {
-        padding: 10px 20px; // Padding for a comfortable clickable area
-        border: 1px solid #ccc; // A subtle border
-        border-radius: 8px; // Rounded corners for a modern touch
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
-        font-size: 16px; // Font size that is easy to read
-        background-color: #f5f5f5; // Light background to fit in with your theme
-        color: #333; // Text color
-        cursor: pointer; // Hand cursor to indicate clickability
-        transition: border-color 0.3s, box-shadow 0.3s; // Smooth transitions for hover and focus effects
+        font-size: 16px;
+        background-color: #f5f5f5;
+        color: #333;
+        cursor: pointer;
+        transition: border-color 0.3s, box-shadow 0.3s;
 
-        // Hover State
         &:hover {
-            border-color: darken(#ccc, 10%); // Slightly darken the border on hover for an interactive effect
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // A subtle shadow for depth on hover
+            border-color: darken(#ccc, 10%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        // Focus State
         &:focus {
-            outline: none; // Removes the default browser outline
-            border-color: #23a6d5; // A blue border on focus to indicate active state
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // A subtle shadow for depth on focus
+            outline: none;
+            border-color: #23a6d5;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     }
 }
@@ -422,12 +418,12 @@ body.light-mode {
     }
 
     .container {
-        flex-direction: column; // Stack child elements vertically
+        flex-direction: column;
     }
 
     .create-post,
     .posts-section {
-        max-width: 100%; // Take full width
+        max-width: 100%;
         flex: 1;
     }
 }

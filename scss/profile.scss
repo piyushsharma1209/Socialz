@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-body.light-mode {
+body {
     background-color: #f5f5f5;
     color: #333;
 }
@@ -10,22 +10,22 @@ body.light-mode {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: Gradient 10s ease infinite;
-    padding: 15px 0; // Added some padding for a taller navbar
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // A subtle shadow for depth
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .container {
         display: flex;
-        justify-content: space-between; // Space out the logo and the links
-        align-items: center; // Vertically center align items
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logo {
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        font-size: 26px; // Slightly increased size for more prominence
+        font-size: 26px;
         color: white;
-        text-transform: uppercase; // Optional: Transforming to uppercase for a bold look
-        letter-spacing: 1px; // Optional: Adding a bit of spacing between letters
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .logo a {
@@ -34,24 +34,24 @@ body.light-mode {
     }
 
     .nav-links {
-        list-style-type: none; // Remove bullet points
-        display: flex; // Making links horizontal
-        gap: 20px; // Gap between links
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
 
         .nav-item {
-            margin: 0; // Resetting any default margin
+            margin: 0;
 
             .nav-link {
-                font-family: 'Poppins', sans-serif; // Setting the same font for a consistent look
-                font-weight: 500; // A little less weight than the logo but still bold
-                font-size: 18px; // Good size for clickability
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+                font-size: 18px;
                 color: white;
-                padding: 5px 15px; // Some padding for a larger clickable area
-                border-radius: 15px; // Rounded corners for hover effect
-                transition: background-color 0.3s, color 0.3s; // Transition for smooth effects
+                padding: 5px 15px;
+                border-radius: 15px;
+                transition: background-color 0.3s, color 0.3s;
 
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.1); // Slight background on hover for a nice effect
+                    background-color: rgba(255, 255, 255, 0.1);
                     color: rgba(255, 255, 255, 0.8);
                 }
             }
@@ -82,19 +82,19 @@ body.light-mode {
 
 
     .profile-avatar {
-        border-radius: 50%; // Making it round
+        border-radius: 50%;
         width: 150px;
         height: 150px;
         object-fit: cover;
         cursor: pointer;
-        border: 2px solid #000000; // A subtle border
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); // A slight shadow for depth
-        transition: transform 0.3s, box-shadow 0.3s; // Smooth transition for hover effects
+        border: 2px solid #000000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
         margin-bottom: 20px;
 
         &:hover {
-            transform: scale(1.05); // Slight scale on hover
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); // Enhanced shadow on hover
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
     }
 
@@ -102,22 +102,20 @@ body.light-mode {
         margin-bottom: 1rem;
     }
 
-    // ... [Your existing styles above]
-
     .counts {
         display: flex;
-        flex-wrap: wrap; // Allow wrapping for the counts
+        flex-wrap: wrap;
         gap: 1rem;
         margin-top: 1rem;
 
         p {
             flex: 1;
             text-align: center;
-            min-width: 150px; // This will ensure a consistent size
+            min-width: 150px;
             background: linear-gradient(-45deg, #ee9952, #e75c7e, #d54d35, #4f45d5);
             background-size: 400% 400%;
             animation: CountGradient 5s ease infinite;
-            color: white; // Adjusted for the gradient background
+            color: white;
             padding: 0.5rem 1rem;
             border-radius: 8px;
 
@@ -132,17 +130,17 @@ body.light-mode {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; // Space between the input and the button
-    margin-top: 2rem; // Give some space from the navbar
+    gap: 15px;
+    margin-top: 2rem;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     width: 100%;
-    max-width: 600px; // Adjust based on your layout
-    margin: 2rem auto; // Center the container
+    max-width: 600px;
+    margin: 2rem auto;
 
     #avatarInput {
-        flex: 1; // Take available space
+        flex: 1;
         padding: 0.5rem 1rem;
         border-radius: 8px;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -152,8 +150,8 @@ body.light-mode {
         transition: border-color 0.3s, box-shadow 0.3s;
 
         &:focus {
-            border-color: #23a6d5; // Change to a color that suits your theme
-            box-shadow: 0 0 5px rgba(35, 166, 213, 0.5); // Adjust the color accordingly
+            border-color: #23a6d5;
+            box-shadow: 0 0 5px rgba(35, 166, 213, 0.5);
         }
     }
 
@@ -171,11 +169,11 @@ body.light-mode {
 
         &:hover {
             background-color: rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px); // Slight lift on hover
+            transform: translateY(-2px);
         }
 
         &:active {
-            transform: translateY(1px); // Push down on click
+            transform: translateY(1px);
         }
     }
 }
@@ -301,7 +299,6 @@ body.light-mode {
 
 .delete-btn {
     background-color: #f44336;
-    /* Red */
     color: white;
     padding: 8px 16px;
     border: none;
@@ -311,19 +308,15 @@ body.light-mode {
     margin-top: 10px;
     align-self: flex-end;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* A little shadow for depth */
 }
 
 .delete-btn:hover {
     background-color: #d32f2f;
-    /* Darker red */
     transform: scale(1.05);
-    /* Slightly enlarge when hovered */
 }
 
 .post-actions {
     display: flex;
-    /* Align items to the right */
     width: 100%;
 }
 
@@ -334,12 +327,11 @@ body.light-mode {
     }
 
     .container {
-        flex-direction: column; // Stack child elements vertically
+        flex-direction: column;
     }
 }
 
 @media (max-width: 768px) {
-    // For tablet and mobile screens
 
     #avatar-update-container {
         flex-direction: column;
@@ -362,17 +354,15 @@ body.light-mode {
     }
 
     .counts {
-        justify-content: center; // Center the counts on smaller screens
+        justify-content: center;
 
         p {
-            flex: none; // Let them take their natural size
-            width: 100%; // Take full width on smaller screens
+            flex: none;
+            width: 100%;
             margin-bottom: 0.5rem;
         }
     }
 
-
-    // Adjust buttons for smaller screens
     .edit-post-btn,
     .update-post-btn,
     .delete-btn {
@@ -399,7 +389,7 @@ body.light-mode {
         gap: 0.5rem;
 
         p {
-            padding: 0.5rem 0.5rem; // Adjust padding for smaller screens
+            padding: 0.5rem 0.5rem;
         }
     }
 }

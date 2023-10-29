@@ -1,4 +1,3 @@
-// Define keys used in local storage
 const ACCESS_TOKEN_KEY = 'accessToken';
 
 // Store access token
