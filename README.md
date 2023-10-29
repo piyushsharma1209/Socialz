@@ -6,11 +6,11 @@
 
 Built with Bootstrap, JavaScript, SCSS, and the Noroff API, this website offers a seamless social media experience:
 
-User Authentication: Secure login and registration using noroff.no or stud.noroff.no credentials.
-Interactive Posting: Create posts. React to and comment on posts from other users.
-Post Filtering: Quickly find the content you're interested in. Either latets posts or posts by who you follow.
-Profile: Update your avatar, see your posts and manage them easily.
-User interaction: Click on a username for a post to explore detailed user profiles and follow them.
+- User Authentication: Secure login and registration using noroff.no or stud.noroff.no credentials.
+- Interactive Posting: Create posts. React to and comment on posts from other users.
+- Post Filtering: Quickly find the content you're interested in. Either latets posts or posts by who you follow.
+- Profile: Update your avatar, see your posts and manage them easily.
+- User interaction: Click on a username for a post to explore detailed user profiles and follow them.
 
 Join us and dive into a fresh and engaging social media experience!!
 
