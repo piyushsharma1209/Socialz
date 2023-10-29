@@ -49,10 +49,30 @@ npm run dev
 3. Open your localhost in the browser.
 
 - Repository: 
-[Github]()
+[Github](https://github.com/piyushsharma1209/Socialz)
 
 - Live demo link: 
-[Live Demo]()
+[Live Demo](https://socialz.netlify.app/)
 
 
 ## Project Brief
+Required features
+The following user stories are required for a passing submission:
+
+- User with @noroff.no or @stud.noroff.no email can register profile
+Registered user can login (Done)
+- User can view a post content feed (Done)
+- User can filter the post content feed (Done)
+- User can search the post content feed (Done)
+- User can view a post content item by ID (Done)
+- User can create a post content item (Done)
+- User can update a post content item (Done)
+- User can delete a post content item (Done)
+
+Additional features
+The following user stories are optional:
+
+- User can create a comment on a post (Done)
+- User can edit profile media (Done)
+- User can follow/unfollow a profile (Done)
+- User can react to a post content item (Done)
