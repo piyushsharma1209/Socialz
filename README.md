@@ -16,17 +16,21 @@ Join us and dive into a fresh and engaging social media experience!!
 
 
 
-## Search
+## Homepage
 
+![image](img/socialz-home.png)
 
-## Login page
+## Follow
 
+![image](img/socialz-follow.png)
 
 ## Profile page
 
+![image](img/socialz-profile.png)
 
-## Edit post page
+## Edit post
 
+![image](img/socialz-edit.png)
 
 ### To run this app:
 
